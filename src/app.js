@@ -21,342 +21,145 @@ app.get('/', (req, res) => {
     res.render('home', { req });
 });
 
+// Getter
+async function sendRandomLink(res, name) {
+    fs.readFile(__dirname + `/public/links/${name}.txt`, function (err, data) {
+        if (err) throw err;
+        else {
+            data += '';
+            let lines = data.split(/[\r\n]+/);
+            let imageUrl = lines[Math.floor(Math.random() * lines.length)];
+            res.json({
+                imageUrl: imageUrl
+            });
+        }
+    });
+}
+
 // Interactions
 app.get('/beg', (req, res) => {
-    fs.readFile(__dirname + "/public/links/beg.txt", function (err, data) {
-        if (err) throw err;
-        data += '';
-        var lines = data.split(/[\r\n]+/);
-
-        res.json({
-            image_url: lines[Math.floor(Math.random() * lines.length)]
-        });
-    })
+    sendRandomLink(res, 'beg');
 });
 
 app.get('/birthday', (req, res) => {
-    fs.readFile(__dirname + "/public/links/birthday.txt", function (err, data) {
-        if (err) throw err;
-        data += '';
-        var lines = data.split(/[\r\n]+/);
-
-        res.json({
-            image_url: lines[Math.floor(Math.random() * lines.length)]
-        });
-    })
+    sendRandomLink(res, 'birthday');
 });
 
 app.get('/bite', (req, res) => {
-    fs.readFile(__dirname + "/public/links/bite.txt", function (err, data) {
-        if (err) throw err;
-        data += '';
-        var lines = data.split(/[\r\n]+/);
-
-        res.json({
-            image_url: lines[Math.floor(Math.random() * lines.length)]
-        });
-    })
+    sendRandomLink(res, 'bite');
 });
 
 app.get('/bully', (req, res) => {
-    fs.readFile(__dirname + "/public/links/bully.txt", function (err, data) {
-        if (err) throw err;
-        data += '';
-        var lines = data.split(/[\r\n]+/);
+    sendRandomLink(res, 'bully');
+});
 
-        res.json({
-            image_url: lines[Math.floor(Math.random() * lines.length)]
-        });
-    })
+app.get('/cheers', (req, res) => {
+    sendRandomLink(res, 'cheers');
 });
 
 app.get('/cookie', (req, res) => {
-    fs.readFile(__dirname + "/public/links/cookie.txt", function (err, data) {
-        if (err) throw err;
-        data += '';
-        var lines = data.split(/[\r\n]+/);
-
-        res.json({
-            image_url: lines[Math.floor(Math.random() * lines.length)]
-        });
-    })
+    sendRandomLink(res, 'cookie');
 });
 
 app.get('/cop', (req, res) => {
-    fs.readFile(__dirname + "/public/links/cop.txt", function (err, data) {
-        if (err) throw err;
-        data += '';
-        var lines = data.split(/[\r\n]+/);
-
-        res.json({
-            image_url: lines[Math.floor(Math.random() * lines.length)]
-        });
-    })
+    sendRandomLink(res, 'cop');
 });
 
 app.get('/dab', (req, res) => {
-    fs.readFile(__dirname + "/public/links/dab.txt", function (err, data) {
-        if (err) throw err;
-        data += '';
-        var lines = data.split(/[\r\n]+/);
-
-        res.json({
-            image_url: lines[Math.floor(Math.random() * lines.length)]
-        });
-    })
+    sendRandomLink(res, 'dab');
 });
 
 app.get('/flex', (req, res) => {
-    fs.readFile(__dirname + "/public/links/flex.txt", function (err, data) {
-        if (err) throw err;
-        data += '';
-        var lines = data.split(/[\r\n]+/);
-
-        res.json({
-            image_url: lines[Math.floor(Math.random() * lines.length)]
-        });
-    })
+    sendRandomLink(res, 'flex');
 });
 
 app.get('/highfive', (req, res) => {
-    fs.readFile(__dirname + "/public/links/highfive.txt", function (err, data) {
-        if (err) throw err;
-        data += '';
-        var lines = data.split(/[\r\n]+/);
-
-        res.json({
-            image_url: lines[Math.floor(Math.random() * lines.length)]
-        });
-    })
+    sendRandomLink(res, 'highfive');
 });
 
 app.get('/hug', (req, res) => {
-    fs.readFile(__dirname + "/public/links/hug.txt", function (err, data) {
-        if (err) throw err;
-        data += '';
-        var lines = data.split(/[\r\n]+/);
-
-        res.json({
-            image_url: lines[Math.floor(Math.random() * lines.length)]
-        });
-    })
+    sendRandomLink(res, 'hug');
 });
 
 app.get('/kiss', (req, res) => {
-    fs.readFile(__dirname + "/public/links/kiss.txt", function (err, data) {
-        if (err) throw err;
-        data += '';
-        var lines = data.split(/[\r\n]+/);
-
-        res.json({
-            image_url: lines[Math.floor(Math.random() * lines.length)]
-        });
-    })
+    sendRandomLink(res, 'kiss');
 });
 
 app.get('/lick', (req, res) => {
-    fs.readFile(__dirname + "/public/links/lick.txt", function (err, data) {
-        if (err) throw err;
-        data += '';
-        var lines = data.split(/[\r\n]+/);
-
-        res.json({
-            image_url: lines[Math.floor(Math.random() * lines.length)]
-        });
-    })
+    sendRandomLink(res, 'lick');
 });
 
 app.get('/pat', (req, res) => {
-    fs.readFile(__dirname + "/public/links/pat.txt", function (err, data) {
-        if (err) throw err;
-        data += '';
-        var lines = data.split(/[\r\n]+/);
-
-        res.json({
-            image_url: lines[Math.floor(Math.random() * lines.length)]
-        });
-    })
+    sendRandomLink(res, 'pat');
 });
 
 app.get('/poke', (req, res) => {
-    fs.readFile(__dirname + "/public/links/poke.txt", function (err, data) {
-        if (err) throw err;
-        data += '';
-        var lines = data.split(/[\r\n]+/);
-
-        res.json({
-            image_url: lines[Math.floor(Math.random() * lines.length)]
-        });
-    })
+    sendRandomLink(res, 'poke');
 });
 
 app.get('/slap', (req, res) => {
-    fs.readFile(__dirname + "/public/links/slap.txt", function (err, data) {
-        if (err) throw err;
-        data += '';
-        var lines = data.split(/[\r\n]+/);
-
-        res.json({
-            image_url: lines[Math.floor(Math.random() * lines.length)]
-        });
-    })
+    sendRandomLink(res, 'slap');
 });
 
 app.get('/shame', (req, res) => {
-    fs.readFile(__dirname + "/public/links/shame.txt", function (err, data) {
-        if (err) throw err;
-        data += '';
-        var lines = data.split(/[\r\n]+/);
-
-        res.json({
-            image_url: lines[Math.floor(Math.random() * lines.length)]
-        });
-    })
+    sendRandomLink(res, 'shame');
 });
 
 app.get('/wave', (req, res) => {
-    fs.readFile(__dirname + "/public/links/wave.txt", function (err, data) {
-        if (err) throw err;
-        data += '';
-        var lines = data.split(/[\r\n]+/);
-
-        res.json({
-            image_url: lines[Math.floor(Math.random() * lines.length)]
-        });
-    })
+    sendRandomLink(res, 'wave');
 });
 
 app.get('/wink', (req, res) => {
-    fs.readFile(__dirname + "/public/links/wink.txt", function (err, data) {
-        if (err) throw err;
-        data += '';
-        var lines = data.split(/[\r\n]+/);
-
-        res.json({
-            image_url: lines[Math.floor(Math.random() * lines.length)]
-        });
-    })
+    sendRandomLink(res, 'wink');
 });
 
 // Random
 app.get('/bird', (req, res) => {
-    fs.readFile(__dirname + "/public/links/bird.txt", function (err, data) {
-        if (err) throw err;
-        data += '';
-        var lines = data.split(/[\r\n]+/);
-
-        res.json({
-            image_url: lines[Math.floor(Math.random() * lines.length)]
-        });
-    })
+    sendRandomLink(res, 'bird');
 });
 
 app.get('/cat', (req, res) => {
-    fs.readFile(__dirname + "/public/links/cat.txt", function (err, data) {
-        if (err) throw err;
-        data += '';
-        var lines = data.split(/[\r\n]+/);
-
-        res.json({
-            image_url: lines[Math.floor(Math.random() * lines.length)]
-        });
-    })
+    sendRandomLink(res, 'cat');
 });
 
 app.get('/dog', (req, res) => {
-    fs.readFile(__dirname + "/public/links/dog.txt", function (err, data) {
-        if (err) throw err;
-        data += '';
-        var lines = data.split(/[\r\n]+/);
-
-        res.json({
-            image_url: lines[Math.floor(Math.random() * lines.length)]
-        });
-    })
+    sendRandomLink(res, 'dog');
 });
 
 app.get('/fennec', (req, res) => {
-    fs.readFile(__dirname + "/public/links/fennec.txt", function (err, data) {
-        if (err) throw err;
-        data += '';
-        var lines = data.split(/[\r\n]+/);
-
-        res.json({
-            image_url: lines[Math.floor(Math.random() * lines.length)]
-        });
-    })
+    sendRandomLink(res, 'fennec');
 });
 
 app.get('/fox', (req, res) => {
-    fs.readFile(__dirname + "/public/links/fox.txt", function (err, data) {
-        if (err) throw err;
-        data += '';
-        var lines = data.split(/[\r\n]+/);
+    sendRandomLink(res, 'fox');
+});
 
-        res.json({
-            image_url: lines[Math.floor(Math.random() * lines.length)]
-        });
-    })
+app.get('/frog', (req, res) => {
+    sendRandomLink(res, 'frog');
 });
 
 app.get('/koala', (req, res) => {
-    fs.readFile(__dirname + "/public/links/koala.txt", function (err, data) {
-        if (err) throw err;
-        data += '';
-        var lines = data.split(/[\r\n]+/);
-
-        res.json({
-            image_url: lines[Math.floor(Math.random() * lines.length)]
-        });
-    })
+    sendRandomLink(res, 'koala');
 });
 
 app.get('/panda', (req, res) => {
-    fs.readFile(__dirname + "/public/links/panda.txt", function (err, data) {
-        if (err) throw err;
-        data += '';
-        var lines = data.split(/[\r\n]+/);
-
-        res.json({
-            image_url: lines[Math.floor(Math.random() * lines.length)]
-        });
-    })
+    sendRandomLink(res, 'panda');
 });
 
 app.get('/pikachu', (req, res) => {
-    fs.readFile(__dirname + "/public/links/pikachu.txt", function (err, data) {
-        if (err) throw err;
-        data += '';
-        var lines = data.split(/[\r\n]+/);
-
-        res.json({
-            image_url: lines[Math.floor(Math.random() * lines.length)]
-        });
-    })
+    sendRandomLink(res, 'pikachu');
 });
 
 app.get('/redpanda', (req, res) => {
-    fs.readFile(__dirname + "/public/links/redpanda.txt", function (err, data) {
-        if (err) throw err;
-        data += '';
-        var lines = data.split(/[\r\n]+/);
-
-        res.json({
-            image_url: lines[Math.floor(Math.random() * lines.length)]
-        });
-    })
+    sendRandomLink(res, 'redpanda');
 });
 
 app.get('/sloth', (req, res) => {
-    fs.readFile(__dirname + "/public/links/sloth.txt", function (err, data) {
-        if (err) throw err;
-        data += '';
-        var lines = data.split(/[\r\n]+/);
+    sendRandomLink(res, 'sloth');
+});
 
-        res.json({
-            image_url: lines[Math.floor(Math.random() * lines.length)]
-        });
-    })
+app.get('/wolf', (req, res) => {
+    sendRandomLink(res, 'wolf');
 });
 
 //The 404 Route (ALWAYS Keep this as the last route)
