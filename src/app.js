@@ -1,165 +1,178 @@
-require('dotenv').config();
+global.devMode = false;
+
+require('dotenv').config({ path: devMode ? 'D:/OneDrive/Documents/Programming/SERVANT GROUP/api.servant.gg/.env' : '/var/www/api.servant.gg/.env' });
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 4001;
-const bodyParser = require('body-parser');
 const path = require('path');
+const bodyParser = require('body-parser');
 const fs = require('fs');
 
-// General stuff
+////////////////////////////////////////////
+// Express
+////////////////////////////////////////////
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(bodyParser.json());
 
+////////////////////////////////////////////
 // Routes
+////////////////////////////////////////////
 app.get('/', (req, res) => {
     res.render('home', { req });
 });
 
 // Getter
-async function sendRandomLink(res, name) {
-    fs.readFile(__dirname + `/public/links/${name}.txt`, function (err, data) {
-        if (err) throw err;
-        else {
-            data += '';
-            let lines = data.split(/[\r\n]+/);
-            let imageUrl = lines[Math.floor(Math.random() * lines.length)];
-            res.json({
-                imageUrl: imageUrl
-            });
+async function sendRandomLink(req, res, name) {
+    console.log()
+    fs.readdir(
+        `${__dirname}/public/${name}`,
+        { withFileTypes: true },
+        (err, files) => {
+            if (err) {
+                console.error(err);
+                res.json({
+                    imageUrl: null
+                });
+            } else {
+                let randomFileIndex = Math.floor(Math.random() * Math.floor(files.length));
+                res.json({
+                    imageUrl: `${req.protocol}://${req.headers.host}/${name}/${files[randomFileIndex].name}`
+                });
+            }
         }
-    });
+    )
+
 }
 
 // Interactions
 app.get('/beg', (req, res) => {
-    sendRandomLink(res, 'beg');
+    sendRandomLink(req, res, 'beg');
 });
 
 app.get('/birthday', (req, res) => {
-    sendRandomLink(res, 'birthday');
+    sendRandomLink(req, res, 'birthday');
 });
 
 app.get('/bite', (req, res) => {
-    sendRandomLink(res, 'bite');
+    sendRandomLink(req, res, 'bite');
 });
 
 app.get('/bully', (req, res) => {
-    sendRandomLink(res, 'bully');
+    sendRandomLink(req, res, 'bully');
 });
 
 app.get('/cheers', (req, res) => {
-    sendRandomLink(res, 'cheers');
+    sendRandomLink(req, res, 'cheers');
 });
 
 app.get('/cookie', (req, res) => {
-    sendRandomLink(res, 'cookie');
+    sendRandomLink(req, res, 'cookie');
 });
 
 app.get('/cop', (req, res) => {
-    sendRandomLink(res, 'cop');
+    sendRandomLink(req, res, 'cop');
 });
 
 app.get('/dab', (req, res) => {
-    sendRandomLink(res, 'dab');
+    sendRandomLink(req, res, 'dab');
 });
 
 app.get('/flex', (req, res) => {
-    sendRandomLink(res, 'flex');
+    sendRandomLink(req, res, 'flex');
 });
 
 app.get('/highfive', (req, res) => {
-    sendRandomLink(res, 'highfive');
+    sendRandomLink(req, res, 'highfive');
 });
 
 app.get('/hug', (req, res) => {
-    sendRandomLink(res, 'hug');
+    sendRandomLink(req, res, 'hug');
 });
 
 app.get('/kiss', (req, res) => {
-    sendRandomLink(res, 'kiss');
+    sendRandomLink(req, res, 'kiss');
 });
 
 app.get('/lick', (req, res) => {
-    sendRandomLink(res, 'lick');
+    sendRandomLink(req, res, 'lick');
 });
 
 app.get('/pat', (req, res) => {
-    sendRandomLink(res, 'pat');
+    sendRandomLink(req, res, 'pat');
 });
 
 app.get('/poke', (req, res) => {
-    sendRandomLink(res, 'poke');
+    sendRandomLink(req, res, 'poke');
 });
 
 app.get('/slap', (req, res) => {
-    sendRandomLink(res, 'slap');
+    sendRandomLink(req, res, 'slap');
 });
 
 app.get('/shame', (req, res) => {
-    sendRandomLink(res, 'shame');
+    sendRandomLink(req, res, 'shame');
 });
 
 app.get('/wave', (req, res) => {
-    sendRandomLink(res, 'wave');
+    sendRandomLink(req, res, 'wave');
 });
 
 app.get('/wink', (req, res) => {
-    sendRandomLink(res, 'wink');
+    sendRandomLink(req, res, 'wink');
 });
 
 // Random
 app.get('/bird', (req, res) => {
-    sendRandomLink(res, 'bird');
+    sendRandomLink(req, res, 'bird');
 });
 
 app.get('/cat', (req, res) => {
-    sendRandomLink(res, 'cat');
+    sendRandomLink(req, res, 'cat');
 });
 
 app.get('/dog', (req, res) => {
-    sendRandomLink(res, 'dog');
+    sendRandomLink(req, res, 'dog');
 });
 
 app.get('/fennec', (req, res) => {
-    sendRandomLink(res, 'fennec');
+    sendRandomLink(req, res, 'fennec');
 });
 
 app.get('/fox', (req, res) => {
-    sendRandomLink(res, 'fox');
+    sendRandomLink(req, res, 'fox');
 });
 
 app.get('/frog', (req, res) => {
-    sendRandomLink(res, 'frog');
+    sendRandomLink(req, res, 'frog');
 });
 
 app.get('/koala', (req, res) => {
-    sendRandomLink(res, 'koala');
+    sendRandomLink(req, res, 'koala');
 });
 
 app.get('/panda', (req, res) => {
-    sendRandomLink(res, 'panda');
+    sendRandomLink(req, res, 'panda');
 });
 
 app.get('/pikachu', (req, res) => {
-    sendRandomLink(res, 'pikachu');
+    sendRandomLink(req, res, 'pikachu');
 });
 
 app.get('/redpanda', (req, res) => {
-    sendRandomLink(res, 'redpanda');
+    sendRandomLink(req, res, 'redpanda');
 });
 
 app.get('/sloth', (req, res) => {
-    sendRandomLink(res, 'sloth');
+    sendRandomLink(req, res, 'sloth');
 });
 
 app.get('/wolf', (req, res) => {
-    sendRandomLink(res, 'wolf');
+    sendRandomLink(req, res, 'wolf');
 });
 
 //The 404 Route (ALWAYS Keep this as the last route)
