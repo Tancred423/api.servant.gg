@@ -1,10 +1,8 @@
-global.devMode = false;
-
-require('dotenv').config({ path: devMode ? 'D:/OneDrive/Documents/Programming/SERVANT GROUP/api.servant.gg/.env' : '/var/www/api.servant.gg/.env' });
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '../.env') });
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 4001;
-const path = require('path');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 
@@ -82,6 +80,10 @@ app.get('/dab', (req, res) => {
     sendRandomLink(req, res, 'dab');
 });
 
+app.get('/f', (req, res) => {
+    sendRandomLink(req, res, 'f');
+});
+
 app.get('/flex', (req, res) => {
     sendRandomLink(req, res, 'flex');
 });
@@ -110,12 +112,12 @@ app.get('/poke', (req, res) => {
     sendRandomLink(req, res, 'poke');
 });
 
-app.get('/slap', (req, res) => {
-    sendRandomLink(req, res, 'slap');
-});
-
 app.get('/shame', (req, res) => {
     sendRandomLink(req, res, 'shame');
+});
+
+app.get('/slap', (req, res) => {
+    sendRandomLink(req, res, 'slap');
 });
 
 app.get('/wave', (req, res) => {
