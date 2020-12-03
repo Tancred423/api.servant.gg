@@ -1,4 +1,4 @@
-# servant.gg
+# api.servant.gg
 API with random images and GIFs for [Servant](https://github.com/Tancred423/Servant)
 
 ## Links
